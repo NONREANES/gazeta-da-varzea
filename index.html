@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gazeta da Várzea — notícias, jogos e loja dos times</title>
+<meta name="description" content="Notícias do futebol de várzea e dos grandes clubes, tabela, jogos e a loja oficial dos times.">
+<meta name="theme-color" content="#0a8f3c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+<header class="topo">
+  <div class="wrap topo-linha">
+    <button class="hamb" aria-label="Abrir menu" onclick="App.menu(true)"><span></span><span></span><span></span></button>
+    <a href="#/" class="marca" aria-label="Página inicial">
+      <span class="marca-sel">gv</span><span class="marca-nome" id="nome-site">gazeta da várzea</span>
+    </a>
+    <nav class="topo-nav">
+      <a href="#/">Início</a>
+      <a href="#/noticias">Notícias</a>
+      <a href="#/tabela">Tabela</a>
+      <a href="#/loja">Loja</a>
+      <a href="#/cadastre">Cadastre seu time</a>
+    </nav>
+    <div class="topo-acoes">
+      <button class="busca-btn" aria-label="Buscar" onclick="App.buscar()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      </button>
+      <button class="sacola-btn" onclick="App.sacola(true)" aria-label="Sacola">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span class="sacola-qtd" id="sacola-qtd">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="barra-clubes"><div class="wrap"><div class="clubes" id="clubes"></div></div></div>
+<div class="placar"><div class="wrap"><div class="placar-trilho" id="placar"></div></div></div>
+<div class="aviso" id="aviso" hidden></div>
+
+<main id="app" class="wrap" aria-live="polite">
+  <div class="carregando">Carregando…</div>
+</main>
+
+<footer class="rodape">
+  <div class="wrap rodape-cols">
+    <div>
+      <div class="marca marca-rodape"><span class="marca-sel">gv</span><span class="marca-nome">gazeta da várzea</span></div>
+      <p id="slogan" class="rodape-slogan"></p>
+    </div>
+    <div>
+      <h4>Navegue</h4>
+      <a href="#/noticias">Notícias</a><a href="#/tabela">Tabela e jogos</a><a href="#/loja">Loja dos times</a><a href="#/cadastre">Cadastre seu time</a>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <div id="contatos"></div>
+    </div>
+  </div>
+  <div class="wrap rodape-copy">© <span id="ano"></span> Gazeta da Várzea · Feito com raça no terrão</div>
+</footer>
+
+<!-- Menu lateral (celular) -->
+<div class="veu" id="veu" onclick="App.fechar()"></div>
+<aside class="gaveta gaveta-esq" id="menu-lateral" aria-label="Menu">
+  <div class="gaveta-topo"><strong>Menu</strong><button onclick="App.fechar()" aria-label="Fechar">×</button></div>
+  <nav class="menu-lista">
+    <a href="#/">Início</a><a href="#/noticias">Notícias</a><a href="#/tabela">Tabela e jogos</a><a href="#/loja">Loja dos times</a><a href="#/cadastre">Cadastre seu time</a>
+  </nav>
+  <div class="menu-sub">Times</div>
+  <div class="menu-times" id="menu-times"></div>
+</aside>
+
+<!-- Sacola -->
+<aside class="gaveta" id="gaveta-sacola" aria-label="Sacola">
+  <div class="gaveta-topo"><strong>Sua sacola</strong><button onclick="App.fechar()" aria-label="Fechar">×</button></div>
+  <div class="sacola-itens" id="sacola-itens"></div>
+  <div class="sacola-rodape">
+    <div class="sacola-total"><span>Total</span><strong id="sacola-total">R$ 0,00</strong></div>
+    <button class="btn btn-verde btn-cheio" onclick="App.finalizar()">Finalizar pelo WhatsApp</button>
+    <small>Você combina pagamento e entrega direto com a nossa equipe.</small>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="assets/js/desenhos.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+# Dados e imagens do site (ficam no Volume da Railway, não no GitHub)
+storage/
+config.php
+.env
+.DS_Store
+Thumbs.db

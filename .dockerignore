@@ -1,0 +1,6 @@
+.git
+.github
+storage
+config.php
+.env
+*.md
