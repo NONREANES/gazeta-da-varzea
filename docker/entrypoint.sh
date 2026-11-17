@@ -1,5 +1,11 @@
 #!/bin/sh
 set -e
+# Garante um único MPM ativo (o PHP do Apache exige o "prefork").
+# Sem isso, o Apache pode falhar com "AH00534: More than one MPM loaded".
+rm -f /etc/apache2/mods-enabled/mpm_*.load /etc/apache2/mods-enabled/mpm_*.conf
+ln -sf ../mods-available/mpm_prefork.load /etc/apache2/mods-enabled/mpm_prefork.load
+ln -sf ../mods-available/mpm_prefork.conf /etc/apache2/mods-enabled/mpm_prefork.conf
+
 # A Railway informa a porta em $PORT
 PORT="${PORT:-8080}"
 sed -i "s/^Listen .*/Listen ${PORT}/" /etc/apache2/ports.conf
